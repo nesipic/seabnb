@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :dashboard, only: [:index]
   resources :bookings, only: [:show, :edit, :update, :destroy]
+  resources :boats, only: [:destroy]
 end

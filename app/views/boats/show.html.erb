@@ -9,3 +9,6 @@
 </div>
 <%= link_to "SHOW ALL BOATS",boats_path %>
 <%= link_to "Edit your boat",edit_boat_path %>
+
+
+<%= link_to "Remove", boat_path(@boat), method: :delete, date: {confirm: "Are you sure"} %>
