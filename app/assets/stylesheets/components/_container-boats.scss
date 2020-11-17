@@ -1,23 +1,26 @@
-.container {
-  margin-top: 70px;
+.container-boats {
+  margin-top: 10px;
   margin-bottom: 100px;
-  width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
-  .container {
+  .container-boats {
     width: 700px;
   }
 }
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
-  .container {
+  .container-boats {
     width: 500px;
   }
 }
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
-  .container {
+  .container-boats {
     width: 400px;
   }
 }

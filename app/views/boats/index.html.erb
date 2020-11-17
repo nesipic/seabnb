@@ -1,9 +1,12 @@
-<div class="container">
-<% @boats.each do |boat| %>
-  <%= link_to(boat_path(boat), :class => "boat-text") do %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1588401273872-959d2076283a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80)">
-<%= boat.name %>
-</div>
-  <% end %> 
-<% end %>
+<div class="container-boats">
+  <div>
+    <% @boats.each do |boat| %>
+      <%= link_to(boat_path(boat), :class => "boat-text") do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1588401273872-959d2076283a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80)">
+      <%= boat.name %>
+    </div>
+      <% end %> 
+    <% end %>
+  </div>
+  <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoia29tbmVuZ3J1IiwiYSI6ImNrZ3diYzU4dDA4bWQzMXJya2k4NWI0dzYifQ.MyI-ty8lAR3NvE2jZpjeAQ'>
 </div> 
