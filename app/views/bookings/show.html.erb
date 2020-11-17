@@ -1,3 +1,7 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1><%= @booking.boat.name %></h1>
+<%= cl_image_tag @booking.boat.image.key, widht: 500, height: 300 %>
+<p><%= @booking.boat.location %></p>
+<p><%= @booking.start_date %> - <%= @booking.end_date %></p>
 <%= link_to 'cancel booking', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to 'edit booking', edit_booking_path(@booking) %>
+<%= link_to 'back', dashboard_path %>
