@@ -21,7 +21,8 @@ cities.each do |city|
       name: Faker::TvShows::GameOfThrones.house,
       description: Faker::TvShows::GameOfThrones.quote,
       location: city,
-      price: Faker::Number.within(range: 50..500)
+      price: Faker::Number.within(range: 50..500),
+      image: image
     )
     boat.image.attach(io: image, filename: "image#{count}", content_type: 'image/png')
     boat.user = alice
