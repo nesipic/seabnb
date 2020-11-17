@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
   def update
     @booking.update(booking_params)
     if @booking.save
-      redirect_to root_path
+      redirect_to booking_path(@booking)
     else
       render :new
     end
