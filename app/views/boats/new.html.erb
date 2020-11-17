@@ -1,7 +1,16 @@
-<%= simple_form_for (@boat) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :location %>
-  <%= f.submit %>
-<% end %>
+<form>
+  <div class="col d-flex justify-content-center">
+    <div class="form-container">
+      <div class="form-new">
+        <%= simple_form_for (@boat) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :location %>
+          <%= f.button :submit, class: "btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</form>
+
