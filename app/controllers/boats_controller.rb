@@ -37,6 +37,11 @@ class BoatsController < ApplicationController
     redirect_to boat_path(@boat)
   end
 
+  def destroy
+    @boat.destroy
+    redirect_to boats_path
+  end
+
   private
 
   def find_boat
