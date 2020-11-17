@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
-  get 'bookings/show'
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'bookings/edit'
-  get 'bookings/update'
-  get 'bookings/destroy'
+  get 'dashboard/index', to: "dashboard#index", as: "dashboard"
+
   devise_for :users
   root to: 'pages#home'
   resources :boats do
