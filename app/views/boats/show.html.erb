@@ -1,6 +1,11 @@
-<p><%= @boat.name %></p>
-<p><%= @boat.description %></p>
-<p><%= @boat.price %> </p>
+<h1><%= @boat.name %></h1>
 <p><%= @boat.location %> </p>
+<%= cl_image_tag @boat.image.key, width: 500, height: 300, class: "rounded-lg" %>
+<div>
+  <p><%= @boat.description %></p>
+</div>
+<div>
+  <p>€<%= @boat.price %> </p>
+</div>
 <%= link_to "SHOW ALL BOATS",boats_path %>
 <%= link_to "Edit your boat",edit_boat_path %>
