@@ -1,5 +1,5 @@
 class BoatsController < ApplicationController
-  before_action :find_boat, only: [:show, :destroy]
+  before_action :find_boat, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -27,6 +27,14 @@ class BoatsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @boat.update(boat_params)
+    redirect_to boat_path(@boat)
   end
 
   private
