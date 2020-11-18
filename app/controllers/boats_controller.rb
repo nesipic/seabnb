@@ -7,7 +7,7 @@ class BoatsController < ApplicationController
     @search = params[:search]
     if @search.present?
       @city = @search["location"]
-      @boats = Boat.where(location: @city)
+      @boats = Boat.where(address: @city)
     end
   end
 

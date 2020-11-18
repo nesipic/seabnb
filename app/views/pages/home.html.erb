@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <%= simple_form_for :search, html: {class: 'col-12 col-md-8 col-lg-6'}, url: boats_path, method: "GET" do |f| %>
-    <%= f.input :location, placeholder: "Where are you going?", class: "input-medium search-query" %>
+    <%= f.input :address, placeholder: "Where are you going?", class: "input-medium search-query" %>
     <%= f.input :start_date, as: :date %>
     <%= f.input :end_date, as: :date %>
     <%= f.submit "Search", class: "btn btn-primary w-100"%>
