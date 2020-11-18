@@ -6,8 +6,14 @@ class BoatsController < ApplicationController
     @boats = Boat.all
     @search = params[:search]
     if @search.present?
-      @city = @search["location"]
+      @city = @search["address"]
       @boats = Boat.where(address: @city)
+    end
+    @markers = @boats.geocoded.map do |boat|
+      {
+        lat: boat.latitude,
+        lng: boat.longitude
+     }
     end
   end
 
