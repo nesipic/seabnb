@@ -1,6 +1,5 @@
 require 'faker'
 require 'open-uri'
-require 'pry'
 
 puts 'clearing db...'
 Booking.destroy_all
