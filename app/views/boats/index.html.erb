@@ -1,12 +1,12 @@
 <div class="container-boats">
   <div>
     <% @boats.each do |boat| %>
-      <%= link_to(boat_path(boat), :class => "boat-text") do %>
+      <%= link_to(boat_path(boat), class: "boat-text", target: :_blank) do %>
     <div class="boat-parent">
     <%= cl_image_tag boat.image.key, width: 500, height: 300, class: "card-category" %>
       <p class="boat-name"> <%= boat.name %> </p>
     </div>
-      <% end %> 
+      <% end %>
     <% end %>
   </div>
   <div id="map"
@@ -14,4 +14,5 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div> 
+
 
