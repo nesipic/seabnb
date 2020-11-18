@@ -1,6 +1,6 @@
 <h1><%= @booking.boat.name %></h1>
 <%= cl_image_tag @booking.boat.image.key, widht: 500, height: 300 %>
-<p><%= @booking.boat.location %></p>
+<p><%= @booking.boat.address %></p>
 <p><%= @booking.start_date %> - <%= @booking.end_date %></p>
 <%= link_to 'cancel booking', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to 'edit booking', edit_booking_path(@booking) %>
