@@ -1,15 +1,35 @@
-<h1>Bookings</h1>
-<div class="my-bookings">
-  <% @bookings.each do |booking| %>
-  <%= link_to booking_path(booking) do  %>
-  <div class="card" style="width: 18rem;">
-    <img class="" src="<%= cl_image_path booking.boat.image.key,  height: 300, width: 300, crop: :fill %>" alt="boat image">
-    <div class="card-body">
-      <h5 class="card-title"><%= booking.boat.name %></h5>
-      <p><%= booking.boat.location %></p>
-      <p><%= booking.start_date %> - <%= booking.end_date %></p>
+
+<div class="dashboard-container">
+  <div class="row mt-5 ">
+    <div class="bookings-container col-12 col-lg-6 p-3">
+      <h1>My bookings</h1>
+        <% @bookings.each do |booking| %>
+          <%= link_to booking_path(booking) do  %>
+            <div class="card mx-auto my-5" style="width: 300px;">
+              <img class="" src="<%= cl_image_path booking.boat.image.key,  height: 300, width: 300, crop: :fill %>" alt="boat image">
+              <div class="card-body">
+                <h5 class="card-title"><%= booking.boat.name %></h5>
+                <p><%= booking.boat.location %></p>
+                <p><%= booking.start_date %> - <%= booking.end_date %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="owned-boats-container col 12 col-lg-6 p-3">
+      <h1>My boats</h1>
+      <% @boats.each do |boat| %>
+        <%= link_to boat_path(boat) do  %>
+        <div class="card mx-auto my-5" style="width: 300px;">
+          <img class="" src="<%= cl_image_path boat.image.key,  height: 300, width: 300, crop: :fill %>" alt="boat image">
+          <div class="card-body">
+              <h5 class="card-title"><%= boat.name %></h5>
+          </div>
+        </div>
+      <% end %>
+       <% end %>
     </div>
   </div>
-  <% end %>
-  <% end %>
 </div>
+
