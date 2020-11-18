@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.boat = @boat
     @booking.user = current_user
     if @booking.save
-      redirect_to root_path
+      redirect_to confirmation_path
     else
       render :new
     end
@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   private
