@@ -1,6 +1,6 @@
 <div class="boat-list">
   <h1 class="p-3">
-    <% if @city.empty? %>
+    <% if @city.nil? || @city.empty? %>
       <p><b>All boats</b></p>
     <% else %>
       <p>Boats in <b><%= @city %></b></p>
