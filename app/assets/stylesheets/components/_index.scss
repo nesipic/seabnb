@@ -4,6 +4,8 @@
 @import "navbar";
 @import "card";
 @import "map";
+@import "booking_card";
+@import "booking_button";
 
 .boat-list {
   width: 50%;
@@ -18,3 +20,4 @@
     width: 100%;
   }
 }
+
