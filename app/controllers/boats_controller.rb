@@ -3,8 +3,7 @@ class BoatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @boats = Boat.all
-    authorize @boat
+    @boats = policy_scope(Boat)
     @search = params[:search]
     if @search.present?
       @city = @search["address"]
@@ -21,6 +20,7 @@ class BoatsController < ApplicationController
 
   def show
     @booking = Booking.new
+    authorize @boat
   end
 
   def new
@@ -31,6 +31,7 @@ class BoatsController < ApplicationController
   def create
     @boat = Boat.new(boat_params)
     authorize @boat
+    authorize current_user
     @boat.user = current_user
 
     if @boat.save
@@ -41,14 +42,17 @@ class BoatsController < ApplicationController
   end
 
   def edit
+    authorize @boat
   end
 
   def update
+    authorize @boat
     @boat.update(boat_params)
     redirect_to boat_path(@boat)
   end
 
   def destroy
+    authorize @boat
     @boat.destroy
     redirect_to dashboard_path
   end
