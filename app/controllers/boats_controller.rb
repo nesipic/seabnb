@@ -7,7 +7,7 @@ class BoatsController < ApplicationController
     @search = params[:search]
     if @search.present?
       @city = @search["address"]
-      @boats = Boat.where(address: @city)
+      @boats = @city.empty? ? Boat.all : Boat.where(address: @city)
     end
     @markers = @boats.geocoded.map do |boat|
       {
@@ -57,6 +57,6 @@ class BoatsController < ApplicationController
   end
 
   def boat_params
-    params.require(:boat).permit(:name, :location, :description, :price, :user_id, :image)
+    params.require(:boat).permit(:name, :address, :description, :price, :user_id, :image)
   end
 end
