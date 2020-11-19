@@ -4,6 +4,7 @@ class BoatsController < ApplicationController
 
   def index
     @boats = Boat.all
+    authorize @boat
     @search = params[:search]
     if @search.present?
       @city = @search["address"]
@@ -14,7 +15,7 @@ class BoatsController < ApplicationController
         lat: boat.latitude,
         lng: boat.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { boat: boat })
-     }
+      }
     end
   end
 
@@ -24,10 +25,12 @@ class BoatsController < ApplicationController
 
   def new
     @boat = Boat.new
+    authorize @boat
   end
 
   def create
     @boat = Boat.new(boat_params)
+    authorize @boat
     @boat.user = current_user
 
     if @boat.save
