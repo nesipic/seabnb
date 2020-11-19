@@ -4,10 +4,10 @@ class BoatsController < ApplicationController
 
   def index
     @boats = policy_scope(Boat)
-    @search = params[:search]
+    @search = params[:address]
     if @search.present?
-      @city = @search["address"]
-      @boats = @city.empty? ? Boat.all : Boat.where(address: @city)
+      @city = @search
+      @boats = @city.empty? ? Boat.all : Boat.where("address ILIKE ?", "%#{params[:address]}%")
     end
     @markers = @boats.geocoded.map do |boat|
       {
