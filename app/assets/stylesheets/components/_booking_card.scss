@@ -5,9 +5,10 @@
 }
 
 .card-trip > img {
-  height: 500px;
   width: 100%;
-  object-fit: cover;
+  height: 500px;
+  object-fit: fill;
+
 }
 
 .card-trip h2 {
@@ -28,13 +29,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: relative;
+
+
+  .card-trip-infos-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+  }
 
 }
 
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.boatprice {
+  font-weight: 1200 !important;
 }
+
+
+

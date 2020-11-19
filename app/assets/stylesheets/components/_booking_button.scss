@@ -39,3 +39,23 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn-flat.book {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: $green;
+  transition: background 0.3s ease;
+}
+
+.btn-gradient.delete {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  background: linear-gradient(#f05454, red);
+  transition: background 0.3s ease;
+  border: 1px solid #f05454;
+}
+
+

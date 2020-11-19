@@ -1,1 +1,25 @@
-// Specific CSS for your home-page
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 600px;
+}
+
+.boats-preview {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color:lightgrey;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.boats-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
