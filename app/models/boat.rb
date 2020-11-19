@@ -1,4 +1,5 @@
 class Boat < ApplicationRecord
+  has_many :bookings, dependent: :destroy
   belongs_to :user
   has_one_attached :image
   validates :name, presence: true
