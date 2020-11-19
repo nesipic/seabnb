@@ -1,19 +1,20 @@
-<div class="card-trip">
-  <img <%= cl_image_tag @booking.boat.image.key, widht: 500, height: 300 %> >
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @booking.boat.name %></h2>
-      <p><%= @booking.boat.address %></p>
-      <p><%= @booking.start_date %> - <%= @booking.end_date %></p>
+<div class="container">
+  <div class="card-trip">
+    <%= cl_image_tag @booking.boat.image.key, widht: 500, height: 300 %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @booking.boat.name %></h2>
+        <p><%= @booking.boat.address %></p>
+        <p><%= @booking.start_date %> - <%= @booking.end_date %></p>
+      </div>
+      <h2 class="card-trip-pricing">
+        <%= link_to 'cancel booking', booking_path(@booking), class: "btn btn-flat", method: :delete, data: { confirm: "Are you sure?" } %>
+        <% if policy(@booking).edit? %>
+          <%= link_to 'edit booking', edit_booking_path(@booking), class: "btn btn-ghost" %>
+        <% end %>
+        <%= link_to 'back', dashboard_path, class: "btn btn-gradient" %>
+        </h2>
     </div>
-    <h2 class="card-trip-pricing">
-      <%= link_to 'cancel booking', booking_path(@booking), class: "btn btn-flat", method: :delete, data: { confirm: "Are you sure?" } %>
-      <% if policy(@booking).edit? %>
-        <%= link_to 'edit booking', edit_booking_path(@booking), class: "btn btn-ghost" %>
-      <% end %>
-      <%= link_to 'back', dashboard_path, class: "btn btn-gradient" %>
-      </h2>
   </div>
 </div>
-
 

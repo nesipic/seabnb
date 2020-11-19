@@ -1,54 +1,59 @@
-
 <div class="container">
   <% if @bookings.present? %>
-  <div class="col-12 p-3 my-3" style="background-color: white;">
-  <h1>My bookings</h1>
-    <% @bookings.each do |booking| %>
-      <%= link_to booking_path(booking) do  %>
-        <div class="card col px-0 m-3" style="width: 300px;">
-          <img class="" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
-          <div class="card-body">
-            <h5 class="card-text"><%= booking.boat.name %></h5>
-            <p class="card-address"><%= booking.boat.address %></p>
-            <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
+    <div class="py-5">
+      <h1>My bookings</h1>
+      <div class="row">
+        <% @bookings.each do |booking| %>
+          <div class="card px-0 m-2" style="width: 300px;">
+            <%= link_to booking_path(booking) do  %>
+              <img class="w-100" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
+              <div class="card-body">
+                <h5 class="card-text"><%= booking.boat.name %></h5>
+                <p class="card-address"><%= booking.boat.address %></p>
+                <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
+              </div>
+            <% end %>
           </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 
   <% if @boat_bookings.present? %>
-  <div class="col-12 p-3" style="background-color: white;">
-  <h1>My boats bookings</h1>
-  <% @boat_bookings.each do |booking| %>
-    <%= link_to booking_path(booking) do  %>
-      <div class="card col px-0 mx-3 my-5" style="width: 300px;">
-        <img class="" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
-        <div class="card-body">
-          <h5 class="card-text"><%= booking.boat.name %></h5>
-          <p class="card-address"><%= booking.boat.address %></p>
-          <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
-        </div>
+    <div class="py-5 border-top border-gray">
+      <h1>My boats bookings</h1>
+      <div class="row">
+        <% @boat_bookings.each do |booking| %>
+          <div class="card px-0 m-2" style="width: 300px;">
+            <%= link_to booking_path(booking) do %>
+              <img class="w-100" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
+              <div class="card-body">
+                <h5 class="card-text"><%= booking.boat.name %></h5>
+                <p class="card-address"><%= booking.boat.address %></p>
+                <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
-  </div>
+    </div>
   <% end %>
 
   <% if @boats.present?  %>
-  <div class="col 12 p-3" style="background-color: white;">
-    <h1>My boats</h1>
-    <% @boats.each do |boat| %>
-      <%= link_to boat_path(boat) do  %>
-        <div class="card col m-3 px-0" style="width: 300px;">
-          <img class="" src="<%= cl_image_path boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
-          <div class="card-body">
+    <div class="py-5 border-top border-gray">
+      <h1>My boats</h1>
+      <div class="row">
+      <% @boats.each do |boat| %>
+        <div class="card px-0 m-2" style="width: 200px;">
+          <%= link_to boat_path(boat) do  %>
+            <img class="w-100" src="<%= cl_image_path boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
+            <div class="card-body">
               <h5 class="card-text"><%= boat.name %></h5>
-          </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
-  </div>
+      </div>
+    </div>
   <% end %>
 </div>
