@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mt-5">
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
       <div>
         <h1><%= @boat.name %></h1>
         <p class="text-secondary"><%= @boat.address %> </p>
@@ -14,8 +14,8 @@
         <% end %>
       </div>
     </div>
-    <div class="d-flex justify-content-center" style="height: 400px;">
-      <%= cl_image_tag @boat.image.key, style: "object-fit: cover;"%>
+    <div class="d-flex justify-content-center" style="height: 300px;">
+      <%= cl_image_tag @boat.image.key, style: "object-fit: cover; width: 100%;"%>
     </div>
   </div>
   <div class="d-flex mb-5 position-relative" style="top: -30px;">
@@ -24,7 +24,7 @@
     </div>
     <div class="col-4 bg-white ml-3 p-3">
       <p><b>€<%= @boat.price.floor %></b> / day </p>
-      <%= link_to 'Book', new_boat_booking_path(@boat), class: "btn btn-outline-success" %>
+      <%= link_to 'Book', new_boat_booking_path(@boat), class: "btn btn-success" %>
     </div>
   </div>
 </div>
