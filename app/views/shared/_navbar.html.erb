@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon position-sticky sticky-top">
   <%= link_to root_path, class: "navbar-brand" do %>
     <i class="fas fa-anchor"> SeaBnB </i>
     <% end %>
@@ -18,8 +18,13 @@
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li> -->
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.picture.attached? %>
+            <%= cl_image_tag current_user.picture.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, transformation: [{width: 1000, height: 1000, :radius=>"max", gravity: "face", crop: "crop"}, {width: 50, crop: "scale"}]%>
+          <% else %>
+             <%= cl_image_tag "default_avatar_ul6iin", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, transformation: [{width: 1000, height: 1000, :radius=>"max", gravity: "face", crop: "crop"}, {width: 50, crop: "scale"}] %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "My bookings", dashboard_index_path, class: "dropdown-item" %>
             <%= link_to "Add a boat", new_boat_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

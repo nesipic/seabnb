@@ -3,5 +3,21 @@
 @import "avatar";
 @import "navbar";
 @import "card";
-@import "container-boats";
 @import "map";
+@import "booking_card";
+@import "booking_button";
+
+.boat-list {
+  width: 50%;
+  padding: 10px;
+}
+
+@media(max-width: 992px) {
+  #map {
+    display: none;
+  }
+  .boat-list {
+    width: 100%;
+  }
+}
+

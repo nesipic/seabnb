@@ -1,18 +1,28 @@
-<div class="container-boats">
-  <div>
-    <% @boats.each do |boat| %>
-      <%= link_to(boat_path(boat), class: "boat-text", target: :_blank) do %>
-    <div class="boat-parent">
-    <%= cl_image_tag boat.image.key, width: 500, height: 300, class: "card-category" %>
-      <p class="boat-name"> <%= boat.name %> </p>
-    </div>
-      <% end %>
+<div class="boat-list">
+  <h1 class="p-3">
+    <% if @city.nil? || @city.empty? %>
+      <p><b>All boats</b></p>
+    <% else %>
+      <p>Boats in <b><%= @city %></b></p>
     <% end %>
-  </div>
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div> 
+  </h1>
+  <% @boats.each do |boat| %>
+    <%= link_to(boat_path(boat), class: "boat-card", target: :_blank) do %>
+    <div class="card-product m-2">
+      <%= cl_image_tag boat.image.key, width: 500, height: 300%>
+      <div class="card-product-infos">
+        <h2><%= boat.name %></h2>
+        <p><%= boat.description %></p>
+        <h2 class="position-relative">€<b><%= boat.price.floor %></b> / day</h2>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<div id="map" class="w-50"
+   style="width: 100%; height: 600px; z-index: 0;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
 
