@@ -1,0 +1,39 @@
+.card {
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-style: solid;
+
+}
+
+.card:hover {
+  box-shadow:0px 0px 15px rgba(0,0,0,0.2), 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+.card-text {
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+}
+
+.card-text:hover {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.card-date {
+  font-size: 18px;
+  color: darkgrey;
+}
+
+.bookings-container {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 500px;
+}
+
+.owned-boats-container {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 500px;
+}
+
