@@ -5,11 +5,47 @@
   right: 0;
 }
 
-.mapboxgl-popup {
-  max-width: 200px;
-}
+
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+
+}
+.mapboxgl-popup-close-button {
+  background-color: red;
+  font-size: 20px;
+}
+.boat-pop-image {
+  padding: 0;
+  width: 250px;
+  height: 164px;
+  position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%); 
+
+
+}
+#boat-pop-name {
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+}
+#boat-pop-price {
+  font-family: $body-font;
+  font-size: 20px;
+  position: absolute;
+  bottom: 1px;
+  left: 100px;
+  color: white;
+  font-weight: bolder;
+  margin-top: 20px;
 }
