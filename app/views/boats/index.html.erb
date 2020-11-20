@@ -8,7 +8,7 @@
   </h1>
   <% @boats.each do |boat| %>
     <%= link_to(boat_path(boat), class: "boat-card", target: :_blank) do %>
-    <div class="card-product m-2">
+    <div class="card-product">
       <%= cl_image_tag boat.image.key, width: 500, height: 300%>
       <div class="card-product-infos">
         <h2><%= boat.name %></h2>
