@@ -1,4 +1,3 @@
-require 'faker'
 require 'open-uri'
 require 'nokogiri'
 
@@ -20,8 +19,9 @@ cindy.save!
 
 puts 'adding boats...'
 cities = ["San Francisco", "Split, Croatia", "Tivat, Montenegro"]
-boats = []
-cities.each do |city|
+users = [alice, bob, cindy]
+cities.each_with_index do |city, i|
+  boats = []
   file = Nokogiri::HTML(URI.open("https://www.clickandboat.com/en/boat-rental/search?where=#{city}"))
   file.search('.boatAd__description > a').first(5).each do |link|
     boats << link.attribute('href')
@@ -29,7 +29,7 @@ cities.each do |city|
 
   boats.each do |boat_link|
     boat = Nokogiri::HTML(URI.open(boat_link))
-    name = boat.search('.productGeneral__title').first.content.strip.gsub(/â/, '')
+    name = boat.search('.productGeneral__title').first.content.strip.gsub(/â\u0080\u0094/, '')
     description = boat.search('.productDescription__text').first.content.strip
     address = boat.search('.productGeneral__text--grey').first.content.strip
     price = boat.search('.amount').first.content.strip.gsub(/,/, '').to_f
@@ -41,16 +41,21 @@ cities.each do |city|
       price: price
     )
     boat.image.attach(io: URI.open(image), filename: image, content_type: 'image/png')
-    boat.user = alice
+    boat.user = users[i]
     boat.save!
-    puts boat.name
+    puts "Name: #{boat.name}, Owner: #{boat.user.username}, Location: #{city}"
   end
 end
 
-# puts 'adding booking...'
-# booking = Booking.new(start_date: Date.today, end_date: Date.today + 3)
-# booking.boat = alice.boats.first
-# booking.user = bob
-# booking.save!
+puts 'adding bookings...'
+booking = Booking.new(start_date: Date.today, end_date: Date.today + 3)
+booking.boat = alice.owned_boats.first
+booking.user = bob
+booking.save!
+
+booking = Booking.new(start_date: Date.today, end_date: Date.today + 3)
+booking.boat = bob.owned_boats.first
+booking.user = alice
+booking.save!
 
 
