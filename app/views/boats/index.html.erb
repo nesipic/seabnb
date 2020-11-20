@@ -12,7 +12,7 @@
       <%= cl_image_tag boat.image.key, width: 500, height: 300%>
       <div class="card-product-infos">
         <h2><%= boat.name %></h2>
-        <p><%= boat.description %></p>
+        <p><%= boat.description[0,150]... %></p>
         <h2 class="position-relative">€<b><%= boat.price.floor %></b> / day</h2>
       </div>
     </div>
