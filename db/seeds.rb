@@ -20,29 +20,31 @@ cindy.save!
 
 puts 'adding boats...'
 city = "San Francisco"
+cities = ["Split, Sustipanski put 1", "Tivat, Porto Montenegro", "San Francisco"]
 boats = []
-file = Nokogiri::HTML(URI.open("https://www.clickandboat.com/en/boat-rental/search?where=#{city}"))
-file.search('.boatAd__description > a').first(5).each do |link|
-  boats << link.attribute('href')
-end
+cities.each do |city|
+  file = Nokogiri::HTML(URI.open("https://www.clickandboat.com/en/boat-rental/search?where=#{city}"))
+  file.search('.boatAd__description > a').first(5).each do |link|
+    boats << link.attribute('href')
+  end
 
-boats.each do |boat_link|
-  boat = Nokogiri::HTML(URI.open(boat_link))
-  name = boat.search('.productGeneral__title').first.content.strip
-  description = boat.search('.productDescription__text').first.content.strip
-  address = boat.search('.productGeneral__text--grey').first.content.strip
-  price = boat.search('.amount').first.content.strip.gsub(/,/, '').to_f
-  image = boat.search('.js-openGallery').first.attribute('style').content.gsub(/background-image: url\(/, 'https:').gsub(/\);/, '')
-  boat = Boat.new(
-    name: name,
-    description: description,
-    address: address,
-    price: price
-    # image: image
-  )
-  boat.image.attach(io: URI.open(image), filename: image, content_type: 'image/png')
-  boat.user = alice
-  boat.save!
+  boats.each do |boat_link|
+    boat = Nokogiri::HTML(URI.open(boat_link))
+    name = boat.search('.productGeneral__title').first.content.strip
+    description = boat.search('.productDescription__text').first.content.strip
+    address = boat.search('.productGeneral__text--grey').first.content.strip
+    price = boat.search('.amount').first.content.strip.gsub(/,/, '').to_f
+    image = boat.search('.js-openGallery').first.attribute('style').content.gsub(/background-image: url\(/, 'https:').gsub(/\);/, '')
+    boat = Boat.new(
+      name: name,
+      description: description,
+      address: address,
+      price: price
+    )
+    boat.image.attach(io: URI.open(image), filename: image, content_type: 'image/png')
+    boat.user = alice
+    boat.save!
+  end
 end
 # boat = Boat.new(
 #   name: Faker::TvShows::GameOfThrones.house,
