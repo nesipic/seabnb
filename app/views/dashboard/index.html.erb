@@ -1,41 +1,59 @@
-
-<div class="dashboard-container">
-  <div class="row mx-n5">
+<div class="container">
   <% if @bookings.present? %>
-    <div class="bookings-container col-12 <%= @boats.present? ? 'col-lg-6' : '' %> px-5" style="background-color: white;">
-      <h1 class="title-dashboard">My bookings</h1>
-      <div class="row justify-content-center">
+    <div class="py-5">
+      <h1>My bookings</h1>
+      <div class="row">
         <% @bookings.each do |booking| %>
-          <%= link_to booking_path(booking), class: "boat-text" do  %>
-            <div class="card col px-0 mx-3 my-5" style="width: 300px;">
-              <img class="" src="<%= cl_image_path booking.boat.image.key,  height: 300, width: 300, crop: :fill %>" alt="boat image">
+          <div class="card px-0 m-2" style="width: 300px;">
+            <%= link_to booking_path(booking) do  %>
+              <img class="w-100" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
               <div class="card-body">
                 <h5 class="card-text"><%= booking.boat.name %></h5>
                 <p class="card-address"><%= booking.boat.address %></p>
                 <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
   <% end %>
-    <% if @boats.present?  %>
-    <div class="owned-boats-container col 12 <%= @bookings.present? ? 'col-lg-6' : '' %> px-5 " style="background-color: white;">
-      <h1 class="title-dashboard">My boats</h1>
-      <div class="row justify-content-center">
-        <% @boats.each do |boat| %>
-          <%= link_to boat_path(boat) do  %>
-            <div class="card col mx-3 px-0 my-5" style="width: 300px;">
-              <img class="" src="<%= cl_image_path boat.image.key,  height: 300, width: 300, crop: :fill %>" alt="boat image">
+
+  <% if @boat_bookings.present? %>
+    <div class="py-5 border-top border-gray">
+      <h1>My boats bookings</h1>
+      <div class="row">
+        <% @boat_bookings.each do |booking| %>
+          <div class="card px-0 m-2" style="width: 300px;">
+            <%= link_to booking_path(booking) do %>
+              <img class="w-100" src="<%= cl_image_path booking.boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
               <div class="card-body">
-                  <h5 class="card-text"><%= boat.name %></h5>
+                <h5 class="card-text"><%= booking.boat.name %></h5>
+                <p class="card-address"><%= booking.boat.address %></p>
+                <p class="card-date"><%= l(booking.start_date, format: :long) %> - <%= l(booking.end_date, format: :long) %></p>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
-    <% end %>
-  </div>
+  <% end %>
+
+  <% if @boats.present?  %>
+    <div class="py-5 border-top border-gray">
+      <h1>My boats</h1>
+      <div class="row">
+      <% @boats.each do |boat| %>
+        <div class="card px-0 m-2" style="width: 200px;">
+          <%= link_to boat_path(boat) do  %>
+            <img class="w-100" src="<%= cl_image_path boat.image.key, height: 300, width: 300, crop: :fill %>" alt="boat image">
+            <div class="card-body">
+              <h5 class="card-text"><%= boat.name %></h5>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

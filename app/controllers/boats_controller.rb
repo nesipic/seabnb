@@ -3,7 +3,11 @@ class BoatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @boats = Boat.all
+# <<<<<<< HEAD
+    @boats = policy_scope(Boat)
+# =======
+#     @boats = Boat.all
+# >>>>>>> master
     @search = params[:address]
     if @search.present?
       @city = @search
@@ -14,20 +18,23 @@ class BoatsController < ApplicationController
         lat: boat.latitude,
         lng: boat.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { boat: boat })
-     }
+      }
     end
   end
 
   def show
     @booking = Booking.new
+    authorize @boat
   end
 
   def new
     @boat = Boat.new
+    authorize @boat
   end
 
   def create
     @boat = Boat.new(boat_params)
+    authorize @boat
     @boat.user = current_user
 
     if @boat.save
@@ -38,14 +45,17 @@ class BoatsController < ApplicationController
   end
 
   def edit
+    authorize @boat
   end
 
   def update
+    authorize @boat
     @boat.update(boat_params)
     redirect_to boat_path(@boat)
   end
 
   def destroy
+    authorize @boat
     @boat.destroy
     redirect_to dashboard_path
   end
