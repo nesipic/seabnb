@@ -29,15 +29,16 @@ import flatpickr from 'flatpickr'
 import 'flatpickr/'
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
-flatpickr(".datepicker", {
-  altInput: true,
-  minDate: "today",
-});
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+
+  flatpickr(".datepicker", {
+  altInput: true,
+  minDate: "today",
+});
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
