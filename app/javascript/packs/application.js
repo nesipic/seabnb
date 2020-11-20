@@ -25,6 +25,14 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
+import flatpickr from 'flatpickr'
+import 'flatpickr/'
+
+flatpickr(".datepicker", {
+  altInput: true,
+  minDate: "today",
+});
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
