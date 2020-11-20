@@ -3,11 +3,7 @@ class BoatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-# <<<<<<< HEAD
     @boats = policy_scope(Boat)
-# =======
-#     @boats = Boat.all
-# >>>>>>> master
     @search = params[:address]
     if @search.present?
       @city = @search
