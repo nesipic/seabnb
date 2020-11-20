@@ -1,55 +1,25 @@
-<!-- <div class="container">
-  <div class="mt-5">
-    <div class="d-flex justify-content-between">
+<div class="container">
+  <div class="card-trip">
+    <%= cl_image_tag @boat.image.key, width: 1000, height: 1000, crop: :fill %>
+    <div class="card-trip-infos">
       <div>
-        <h1><%= @boat.name %></h1>
-        <p class="text-secondary"><%= @boat.address %> </p>
+        <h2><%= @boat.name %></h2>
+        <p><%= @boat.address %></p>
+        <p><%= @boat.description  %></p>
       </div>
-      <div class="ml-5">
-        <%= link_to edit_boat_path, class: "btn btn-outline-primary" do%>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to boat_path(@boat), method: :delete, date: {confirm: "Are you sure"}, class: "btn btn-outline-danger" do %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center" style="height: 300px;">
-      <%= cl_image_tag @boat.image.key, style: "object-fit: cover; width: 100%;"%>
-    </div>
-  </div>
-  <div class="d-flex mb-5 position-relative" style="top: -30px;">
-    <div class="col-8 bg-white mr-3 p-3">
-      <p><%= @boat.description %></p>
-    </div>
-    <div class="col-4 bg-white ml-3 p-3">
-      <p><b>€<%= @boat.price.floor %></b> / day </p>
-      <%= link_to 'Book', new_boat_booking_path(@boat), class: "btn btn-success" %>
-    </div>
-  </div>
-</div> -->
 
+      <div class="card-trip-infos-right">
+        <div class="boatprice mr-2 font-weight-bold">€<%= @boat.price.floor %> / day </div>
 
-
-<div class="card-trip">
-  <%= cl_image_tag @boat.image.key, widht: 100, height: 100 %>
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @boat.name %></h2>
-      <p><%= @boat.address %></p>
-      <p><%= @boat.description  %></p>
-    </div>
-
-    <div class="card-trip-infos-right">
-      <div class="boatprice mr-2 font-weight-bold">€<%= @boat.price.floor %> / day </div>
-
-      <div class="card-trip-pricing">
-        <%= link_to 'Book', new_boat_booking_path(@boat), class: "btn btn-flat book" %>
-        <%= link_to 'Edit', edit_boat_path, class: "btn btn-ghost" %>
-        <%= link_to 'Delete', boat_path(@boat), method: :delete, date: {confirm: "Are you sure"}, class: "btn btn-gradient delete" %>
+        <div class="card-trip-pricing">
+          <% if policy(@boat).edit? %>
+            <%= link_to 'Edit', edit_boat_path, class: "btn btn-ghost" %>
+            <%= link_to 'Delete', boat_path(@boat), method: :delete, date: {confirm: "Are you sure"}, class: "btn btn-gradient delete" %>
+          <% else %>
+            <%= link_to 'Book', new_boat_booking_path(@boat), class: "btn btn-flat book" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
