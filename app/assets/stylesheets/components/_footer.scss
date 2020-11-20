@@ -1,14 +1,22 @@
+#page-container {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+}
+
 .footer {
   background: #F4F4F4;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 2.5rem;
   padding: 0px 30px;
   color: rgba(0,0,0,0.3);
   position: relative;
   width: 100%;
   bottom: 0;
+  margin-top: 5px;
 }
 .footer-links {
   display: flex;
