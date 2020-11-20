@@ -48,12 +48,12 @@ cities.each_with_index do |city, i|
 end
 
 puts 'adding bookings...'
-booking = Booking.new(start_date: Date.today, end_date: Date.today + 3)
+booking = Booking.new(start_date: Date.today, end_date: Date.today + 3, status: "pending")
 booking.boat = alice.owned_boats.first
 booking.user = bob
 booking.save!
 
-booking = Booking.new(start_date: Date.today, end_date: Date.today + 3)
+booking = Booking.new(start_date: Date.today, end_date: Date.today + 3, status: "pending")
 booking.boat = bob.owned_boats.first
 booking.user = alice
 booking.save!
