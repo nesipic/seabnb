@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :dashboard, only: [:index]
-  resources :bookings, only: [:show, :edit, :update, :destroy]
+  resources :bookings, only: [:show, :edit, :update, :destroy] do
+    member do
+      post :approve
+      post :decline
+    end
+  end
   resources :boats, only: [:destroy]
 end
